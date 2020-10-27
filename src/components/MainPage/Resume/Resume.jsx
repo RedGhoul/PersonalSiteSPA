@@ -8,15 +8,14 @@ export class Resume extends Component {
     Jobs: []
   };
   componentDidMount() {
-    WorkExperience.Get()
-      .then(res => {
-        this.setState({ Jobs: res.data.list_Workexperience });
+    WorkExperience.Get().then(res => {
+        this.setState({ Jobs: res.data});
       });
   }
 
   render() {
     let main = this.state.Jobs.map((ele, index) => {
-      //onsole.log(ele.url);
+      
       let timelinetype;
 
       if (index % 2 === 0) {
@@ -24,10 +23,9 @@ export class Resume extends Component {
       } else {
         timelinetype = "animate-box timeline-unverted";
       }
-      let comments = ele.comment.map((com, index) => {
-        if (com.length > 0) {
-          return <p key={index}> + {com}</p>;
-        }
+
+      let comments = ele.comments.map((com, index) => {
+          return <p key={index}> + {com.value}</p>;
       });
       return (
         <li className={timelinetype} key={index}>
@@ -36,7 +34,7 @@ export class Resume extends Component {
           </div>
           <div className="timeline-panel">
             <div className="timeline-heading">
-              <h3 className="timeline-title">{ele.postion_name}</h3>
+              <h3 className="timeline-title">{ele.postion_Name}</h3>
               <span className="company">{ele.date}</span>
             </div>
             <div className="timeline-body">{comments}</div>

@@ -2,7 +2,7 @@ import axios from "axios";
 import config from '../config/config';
 
 const Get = () => {
-    return axios.get(config.baseURL + `/workexperience`);
+    return axios.get(config.baseURL + `api/workexperiences`);
 };
 const Delete = (headers, id) => {
     return axios.post(config.baseURL + `/workexperience/delete/` + id, {},

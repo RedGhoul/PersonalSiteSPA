@@ -26,13 +26,13 @@ class Login extends Component {
         }
 
         this.setState({ loading: true });
-        Users.signInUser(username, password).then((res) => {
-            this.props.authSwitch();
-            this.props.setToken(res.data.token);
-            this.props.history.push("/CRUD/");
-        }).catch((error) => {
-            this.setState({ error, loading: false });
-        });
+        // Users.signInUser(username, password).then((res) => {
+        //     this.props.authSwitch();
+        //     this.props.setToken(res.data.token);
+        //     this.props.history.push("/CRUD/");
+        // }).catch((error) => {
+        //     this.setState({ error, loading: false });
+        // });
     }
 
     render() {

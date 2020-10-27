@@ -13,7 +13,7 @@ export class Work extends React.Component {
 
   componentDidMount() {
     Project.Get().then(res => {
-      this.setState({ Projects: res.data.list_projects });
+      this.setState({ Projects: res.data });
     });
   }
 
@@ -21,10 +21,10 @@ export class Work extends React.Component {
     let main = this.state.Projects.map((ele, index) => {
       //onsole.log(ele.url);
       let urlLink = null;
-      if (ele.url_live) {
-        urlLink = ele.url_live;
+      if (ele.url_Live) {
+        urlLink = ele.url_Live;
       } else {
-        urlLink = ele.url_github;
+        urlLink = ele.url_Github;
       }
       return (
         <div
@@ -44,7 +44,7 @@ export class Work extends React.Component {
           >
             <div className="desc">
               <h3>{ele.name}</h3>
-              <span>{ele.tag_line}</span>
+              <span>{ele.tag_Line}</span>
             </div>
           </div>
         </div>

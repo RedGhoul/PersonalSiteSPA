@@ -16,7 +16,7 @@ class WorkExperinceSection extends React.Component {
     WorkExperience.Get()
       .then(res => {
         this.setState({
-          Workexperinces: res.data.list_Workexperience
+          Workexperinces: res.data
         });
       })
       .catch(error => {
@@ -26,7 +26,11 @@ class WorkExperinceSection extends React.Component {
 
   createCardsRow = () => {
     let cards = [];
+
     const { Workexperinces } = this.state;
+    if(Workexperinces == undefined){
+      return cards;
+    }
     let temp = [];
     for (let index = 0; index < Workexperinces.length; index++) {
       const element = Workexperinces[index];
